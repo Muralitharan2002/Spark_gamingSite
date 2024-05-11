@@ -52,7 +52,7 @@ function News() {
                     news1.map((item, index) => (
                         <div key={index} className='flex lg:flex-nowrap md:flex-wrap flex-wrap items-center'>
                             <div className='lg:w-3/6 md:w-full w-full lg:h-72 md:h-96 h-80 '>
-                                <img src={item.img} alt="" className=' w-full h-full lg:object-cover md:object-cover object-cover' />
+                                <img src={item.img} alt="" className=' w-full h-full lg:object-cover md:object-cover object-cover' loading='lazy' />
                             </div>
                             <div className='text-left w-4/6 lg:ps-4 md:py-5 py-5'>
                                 <h3 className='font-Main text-2xl'>{item.heading}</h3>
@@ -72,7 +72,7 @@ function News() {
                     news2.map((item, index) => (
                         <div key={index} className='flex lg:flex-nowrap md:flex-wrap flex-wrap items-center'>
                             <div className='lg:w-3/6 md:w-full w-full lg:h-72 md:h-96 h-80'>
-                                <img src={item.img} alt="" className=' w-full h-full lg:object-cover md:object-cover' />
+                                <img src={item.img} alt="" className=' w-full h-full lg:object-cover md:object-cover' loading='lazy' />
                             </div>
                             <div className='text-left w-4/6 lg:ps-4 md:py-5 py-5'>
                                 <h3 className='font-Main text-2xl'>{item.heading}</h3>

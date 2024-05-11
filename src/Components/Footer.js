@@ -35,14 +35,14 @@ function Footer() {
                 {
                     label.map((item, index) => (
                         <div key={index} className='lg:w-44 md:w-44 w-28'>
-                            <img src={item.img1} alt="" className='w-full' />
+                            <img src={item.img1} alt="" className='w-full' loading='lazy' />
                         </div>
                     ))
                 }
             </div>
             <div className=' py-28 space-y-10 px-3'>
                 <div className='lg:text-5xl text-3xl font-Main flex items-center justify-center gap-2 z-40'>
-                    <img src={logo} alt="spark logo" className='lg:w-11 w-9' />
+                    <img src={logo} alt="spark logo" className='lg:w-11 w-9' loading='lazy' />
                     <p>SPARK</p>
                 </div>
                 <div>

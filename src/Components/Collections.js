@@ -92,7 +92,7 @@ function Collections() {
                         </div>
                         <div className=''>
                             <div className='float-right pe-4'>
-                                <img src={game1} alt="Game Violance" className='lg:w-12 w-12' />
+                                <img src={game1} alt="Game Violance" className='lg:w-12 w-12' loading='lazy' />
                             </div>
                             <div className=''>
                                 <p className='lg:text-4xl md:text-3xl text-2xl font-Main '>Game Violence</p>
@@ -114,7 +114,7 @@ function Collections() {
                         games.map((item, index) => (
                             <div className='lg:w-full md:w-full sm:w-5/6 card' key={index}>
                                 <div className=''>
-                                    <img src={item.pic} alt="last of us" className='h-96 w-full brightness-75 saturate-50 duration-500 effect' />
+                                    <img src={item.pic} alt="last of us" loading='lazy' className='h-96 w-full brightness-75 saturate-50 duration-500 effect' />
                                 </div>
                                 <div className='flex justify-end my-4'>
                                     <span className='bg-[#D74452] px-3 py-1 font-primary text-sm'>

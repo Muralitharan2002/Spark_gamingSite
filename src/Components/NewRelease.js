@@ -19,7 +19,7 @@ function NewRelease() {
 
             {/* <div className='grid grid-cols-2'> */}
             <div className='lg:w-[23rem] md:w-[30rem] w-auto'>
-                <img src={gta6} alt="grand auto theft 6" className='w-full' />
+                <img src={gta6} alt="grand auto theft 6" className='w-full' loading='lazy' />
             </div>
 
             <div className='lg:flex-1 md:flex-grow flex-grow'>

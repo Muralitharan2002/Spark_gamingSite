@@ -1,37 +1,34 @@
-import React, { lazy, Suspense } from 'react';
-import Header from '../Components/Header';
-
-// Lazy load the remaining components
-const Home = lazy(() => import('../Components/Home'));
-const Collections = lazy(() => import('../Components/Collections'));
-const Story = lazy(() => import('../Components/Story'));
-const ClientMoto = lazy(() => import('../Components/ClientMoto'));
-const NewRelease = lazy(() => import('../Components/NewRelease'));
-const Promo = lazy(() => import('../Components/Promo'));
-const News = lazy(() => import('../Components/News'));
-const Footer = lazy(() => import('../Components/Footer'));
+import React from 'react'
+import Header from '../Components/Header'
+import Home from '../Components/Home'
+import Collections from '../Components/Collections'
+import Story from '../Components/Story'
+import ClientMoto from '../Components/ClientMoto'
+import NewRelease from '../Components/NewRelease'
+import Promo from '../Components/Promo'
+import News from '../Components/News'
+import Footer from '../Components/Footer'
 
 function Home_page() {
+
     return (
-        <div className='text-stone-300'>
+        <div className='  text-stone-300'>
+            <Header />
+            <div className="text-stone-300 bg-home bg-cover lg:bg-right md:bg-right bg-center">
 
+                <Home />
 
-            <Suspense fallback={<div className=' text-black'>Loading...</div>}>
-                <Header />
-                <div className="text-stone-300 bg-home bg-cover lg:bg-right md:bg-right bg-center">
+            </div>
+            <Collections />
+            <Story />
+            <ClientMoto />
+            <NewRelease />
+            <Promo />
+            <News />
+            <Footer />
 
-                    <Home />
-                </div>
-                <Collections />
-                <Story />
-                <ClientMoto />
-                <NewRelease />
-                <Promo />
-                <News />
-                <Footer />
-            </Suspense>
         </div>
-    );
+    )
 }
 
-export default Home_page;
+export default Home_page

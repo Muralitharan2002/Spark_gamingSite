@@ -47,7 +47,7 @@ function Promo() {
                 {
                     promo.map((item, index) => (
                         <div key={index} className='lg:w-[23rem] md:w-[19rem] w-[23rem] relative overflow-hidden card'>
-                            <img src={item.img} alt="" className='w-full h-full' />
+                            <img src={item.img} alt="" className='w-full h-full' loading='lazy' />
                             {/* <div> */}
                             <div className=' bg-black lg:w-[5rem] md:w-[5rem] w-[4rem] lg:py-3 md:py-3 py-2 text-center absolute top-0 -right-24 card-1 duration-500 backdrop-blur'>
                                 <p className='lg:text-3xl md:text-3xl text-xl font-Main'>{item.rate}</p>

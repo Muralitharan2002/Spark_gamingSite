@@ -7,7 +7,7 @@ function Story() {
     return (
         <div className='bg-black flex items-center justify-center lg:flex-nowrap flex-wrap-reverse text-stone-300 px-2 py-20 -mt-1'>
             <div className='lg:w-2/4 md:w-4/5 w-full p-2 '>
-                <img src={gow} alt="God Of War" className='w-full' />
+                <img src={gow} alt="God Of War" className='w-full' loading='lazy' />
                 <div className='bg-[#D74452] border border-[#D74452] hover:bg-black duration-500 cursor-pointer  py-3 font-primary text-xl mt-10 text-center lg:mx-20'>
                     Download Game
                 </div>
