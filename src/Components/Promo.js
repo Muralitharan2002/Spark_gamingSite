@@ -5,6 +5,8 @@ import ronin from "../Assets/ronin.png"
 import tekken from "../Assets/tekken.jpg"
 import deathspace from "../Assets/deathspace.jpg"
 
+import { motion } from "framer-motion"
+
 function Promo() {
 
     const promo = [
@@ -30,23 +32,66 @@ function Promo() {
         },
     ]
 
+    const container = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                delayChildren: 0.4,
+                staggerChildren: 0.2,
+            }
+        }
+    }
+
+
+    const card = {
+        hidden: { y: -100, opacity: 0 },
+        visible: {
+            y: 0,
+            opacity: 1,
+        }
+
+    }
+
     return (
-        <div className='bg-black lg:px-16 px-3 py-10 pb-40 -mt-1'>
+        <div className='bg-black lg:px-16 px-3 py-10 pb-40 -mt-1 overflow-hidden'>
             <div className='flex items-end justify-between flex-wrap gap-10 mb-20'>
-                <div className=' space-y-4'>
+                <motion.div className=' space-y-4'
+                    initial={{ x: -100, opacity: 0 }}
+                    whileInView={{ x: 0, opacity: 1 }}
+                    transition={{ duration: 0.7, delay: 0.2, ease: "linear" }}
+                    viewport={{ once: true }}
+                >
                     <h3 className='font-Main text-5xl'>GAME PROMOS</h3>
                     <p className='font-primary text-xl text-slate-400'>SPECIAL OFFER</p>
-                </div>
-                <button className='bg-[#D74452] flex items-center gap-3 border border-[#D74452] hover:bg-black duration-500 cursor-pointer  py-4 px-10 font-primary text-lg'>
-                    LOAD MORE
-                    <BsArrowRight />
-                </button>
+                </motion.div>
+                <motion.div
+                    initial={{ x: 100, opacity: 0 }}
+                    whileInView={{ x: 0, opacity: 1 }}
+                    transition={{ duration: 0.7, delay: 0.2, ease: "linear" }}
+                    viewport={{ once: true }}
+                >
+                    <button className='bg-[#D74452] flex items-center gap-3 border border-[#D74452] hover:bg-black duration-500 cursor-pointer  py-4 px-10 font-primary text-lg'>
+                        LOAD MORE
+                        <BsArrowRight />
+                    </button>
+                </motion.div>
+
             </div>
 
-            <div className='flex lg:justify-center justify-around lg:flex-nowrap flex-wrap gap-10'>
+            <motion.div className='flex lg:justify-center justify-around lg:flex-nowrap flex-wrap gap-10'
+                variants={container}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.2, ease: "linear" }}
+            >
                 {
                     promo.map((item, index) => (
-                        <div key={index} className='lg:w-[23rem] md:w-[19rem] w-[23rem] relative overflow-hidden card'>
+                        <motion.div key={index} className='lg:w-[23rem] md:w-[19rem] w-[23rem] relative overflow-hidden card'
+                            variants={card}
+
+                        >
                             <img src={item.img} alt="" className='w-full h-full' loading='lazy' />
                             {/* <div> */}
                             <div className=' bg-black lg:w-[5rem] md:w-[5rem] w-[4rem] lg:py-3 md:py-3 py-2 text-center absolute top-0 -right-24 card-1 duration-500 backdrop-blur'>
@@ -58,10 +103,10 @@ function Promo() {
                                 <p className='lg:text-lg md:text-lg text-[#D74452] tracking-widest'>PRICE</p>
                             </div>
                             {/* </div> */}
-                        </div>
+                        </motion.div>
                     ))
                 }
-            </div>
+            </motion.div>
         </div>
     )
 }

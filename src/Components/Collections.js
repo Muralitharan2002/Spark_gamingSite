@@ -7,6 +7,8 @@ import alan_wake from "../Assets/alan_wake.png"
 import creed from "../Assets/creed.webp"
 import forizon from "../Assets/forizon.jpg"
 
+import { motion } from "framer-motion"
+
 function Collections() {
 
     const games = [
@@ -76,15 +78,52 @@ function Collections() {
         // }
     ]
 
+    const container = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                delayChildren: 0.4,
+                staggerChildren: 0.2,
+                ease: "linear"
+            }
+        }
+    }
+
+
+    const card = {
+        hidden: { y: 40, opacity: 0 },
+        visible: {
+            y: 0,
+            opacity: 1
+        }
+
+    }
     return (
+
         <div className='bg-black text-stone-300 lg:py-40 md:py-40 py-36 -mt-1'>
             <div className=' lg:mx-24 mx-3'>
 
-                <div className=' grid lg:grid-flow-col lg:place-items-center md:place-items-center  lg:gap-6 gap-9 pb-16 border-b-2 border-b-slate-800' >
-                    <div className=' font-Main lg:text-4xl md:text-4xl text-3xl grid grid-cols-1 min-w-70'>
+                <motion.div className=' grid lg:grid-flow-col lg:place-items-center md:place-items-center  lg:gap-6 gap-9 pb-16 border-b-2 border-b-slate-800'
+                    initial={{ opacity: 0, y: 100 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.2, ease: 'linear' }}
+                    viewport={{ once: true }}
+                >
+                    <motion.div className=' font-Main lg:text-4xl md:text-4xl text-3xl grid grid-cols-1 min-w-70'
+                        initial={{ opacity: 0, x: -100 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6, delay: 0.2, ease: 'linear' }}
+                    >
                         Pre-order digitally now - Play at launch
-                    </div>
-                    <div className=' flex items-center justify-between flex-wrap gap-9 '>
+                    </motion.div>
+                    <motion.div className=' flex items-center justify-between flex-wrap gap-9 '
+                        initial={{ opacity: 0, x: 100 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+
+                        viewport={{ once: true }}
+                    >
                         <div className='font-primary'>
                             <button className='border-2 border-[#D74452] hover:bg-[#D74452] duration-500 text-xl lg:px-8 px-6 lg:py-5 py-4 flex items-center gap-4 tracking-wider'>Read More
                                 <BsArrowRight />
@@ -100,19 +139,39 @@ function Collections() {
                                 </p>
                             </div>
                         </div>
-                    </div>
-                </div>
+                    </motion.div>
+                </motion.div>
             </div>
 
             <div className='text-stone-300 pt-36 px-4'>
                 <div className=' text-center'>
-                    <h3 className='font-Main lg:text-6xl text-4xl  mb-5'> Latest Games Releases</h3>
-                    <p className='font-primary text-lg text-slate-400'>GAMES COLLECTION</p>
+                    <motion.h3 className='font-Main lg:text-6xl text-4xl  mb-5'
+                        initial={{ opacity: 0, scale: 0.5 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.7, delay: 0.2, ease: 'easeIn' }}
+                        viewport={{ once: true }}
+                    > Latest Games Releases</motion.h3>
+                    <motion.p className='font-primary text-lg text-slate-400'
+                        initial={{ opacity: 0, scale: 0.5 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.7, delay: 0.2, ease: 'easeIn' }}
+                        viewport={{ once: true }}
+                    >GAMES COLLECTION</motion.p>
                 </div>
-                <div className='grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 place-items-center gap-10 lg:mx-3 md:mx-10 xs:mx-5  mt-20'>
+                <motion.div className='grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 place-items-center gap-10 lg:mx-3 md:mx-10 xs:mx-5  mt-20'
+                    variants={container}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                >
                     {
                         games.map((item, index) => (
-                            <div className='lg:w-full md:w-full sm:w-5/6 card' key={index}>
+                            <motion.div className='lg:w-full md:w-full sm:w-5/6 card' key={index}
+                                variants={card}
+                                initial={card.hidden}
+                                whileInView={card.visible}
+                                viewport={{ once: true }}
+                            >
                                 <div className=''>
                                     <img src={item.pic} alt="last of us" loading='lazy' className='h-96 w-full brightness-75 saturate-50 duration-500 effect' />
                                 </div>
@@ -133,10 +192,10 @@ function Collections() {
                                         &#8377; {item.price_inr}
                                     </div>
                                 </div>
-                            </div>
+                            </motion.div>
                         ))
                     }
-                </div>
+                </motion.div>
             </div>
         </div>
     )

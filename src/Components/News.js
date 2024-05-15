@@ -5,6 +5,8 @@ import game3 from "../Assets/game3.jpg"
 import game4 from "../Assets/game4.webp"
 import { BsArrowRight } from "react-icons/bs";
 
+import { motion } from "framer-motion"
+
 function News() {
 
     const news1 = [
@@ -23,6 +25,7 @@ function News() {
         }
 
     ]
+
     const news2 = [
 
         {
@@ -41,16 +44,53 @@ function News() {
 
     ]
 
+    const container = {
+        hidden: { opacity: 1, scale: 0 },
+        visible: {
+            opacity: 1,
+            scale: 1,
+            transition: {
+                delayChildren: 0.3,
+                staggerChildren: 0.2
+            }
+        }
+    }
+
+    const card = {
+        hidden: { y: 20, opacity: 0 },
+        visible: {
+            y: 0,
+            opacity: 1
+        }
+    }
+
     return (
-        <div className='bg-black pb-40 lg:px-20 md:px-15 px-3 -mt-1'>
+        <div className='bg-black pb-40 lg:px-20 md:px-15 px-3 -mt-1 overflow-hidden'>
             <div className='text-center'>
-                <h3 className='font-Main text-5xl'>ARTICLE</h3>
-                <p className='font-primary text-xl mt-5'>SPARK NEWS</p>
+                <motion.h3 className='font-Main text-5xl'
+                    initial={{ opacity: 0, scale: 0 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.5, delay: 0.2, ease: 'linear' }}
+                    viewport={{ once: true }}
+                >ARTICLE</motion.h3>
+                <motion.p className='font-primary text-xl mt-5'
+                    initial={{ opacity: 0, scale: 0 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.5, delay: 0.3, ease: 'linear' }}
+                    viewport={{ once: true }}
+                >SPARK NEWS</motion.p>
             </div>
-            <div className='flex lg:flex-nowrap md:flex-wrap flex-wrap gap-10 mt-20'>
+            <motion.div className='flex lg:flex-nowrap md:flex-wrap flex-wrap gap-10 mt-20'
+                variants={container}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+            >
                 {
                     news1.map((item, index) => (
-                        <div key={index} className='flex lg:flex-nowrap md:flex-wrap flex-wrap items-center'>
+                        <motion.div key={index} className='flex lg:flex-nowrap md:flex-wrap flex-wrap items-center'
+                            variants={card}
+                        >
                             <div className='lg:w-3/6 md:w-full w-full lg:h-72 md:h-96 h-80 '>
                                 <img src={item.img} alt="" className=' w-full h-full lg:object-cover md:object-cover object-cover' loading='lazy' />
                             </div>
@@ -62,15 +102,22 @@ function News() {
                                     <BsArrowRight />
                                 </button>
                             </div>
-                        </div>
+                        </motion.div>
                     ))
                 }
-            </div>
+            </motion.div>
 
-            <div className='flex lg:flex-nowrap md:flex-wrap flex-wrap gap-10 mt-10'>
+            <motion.div className='flex lg:flex-nowrap md:flex-wrap flex-wrap gap-10 mt-10'
+                variants={container}
+                initial="hidden"
+                whileInView="visible"
+            // viewport={{ once: true }}
+            >
                 {
                     news2.map((item, index) => (
-                        <div key={index} className='flex lg:flex-nowrap md:flex-wrap flex-wrap items-center'>
+                        <motion.div key={index} className='flex lg:flex-nowrap md:flex-wrap flex-wrap items-center'
+                            variants={card}
+                        >
                             <div className='lg:w-3/6 md:w-full w-full lg:h-72 md:h-96 h-80'>
                                 <img src={item.img} alt="" className=' w-full h-full lg:object-cover md:object-cover' loading='lazy' />
                             </div>
@@ -82,10 +129,10 @@ function News() {
                                     <BsArrowRight />
                                 </button>
                             </div>
-                        </div>
+                        </motion.div>
                     ))
                 }
-            </div>
+            </motion.div>
 
         </div>
     )
